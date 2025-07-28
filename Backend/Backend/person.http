@@ -1,0 +1,15 @@
+@base_addess = http://localhost:3000/api/people
+
+POST {{base_addess}}
+Content-Type: application/json
+
+{
+    "firstName":"J",
+    "lastName":"D"
+}
+
+###
+GET  {{base_addess}}
+
+###
+GET  {{base_addess}}/1
