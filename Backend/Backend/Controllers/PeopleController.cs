@@ -68,5 +68,52 @@ public class PeopleController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, ex.Message); // 500 internal server error + message in the response body
         }
     }
+
+    [HttpPut("{id:int}")]  // PUT /api/people/1
+    public async Task<IActionResult> UpdatePerson(int id, [FromBody] Person person)
+    {
+        try
+        {
+            if (id != person.Id)
+            {
+                return BadRequest("Id in url and body mismatches"); // 400 + message in body 
+            }
+            if (!await _context.People.AnyAsync(p => p.Id == id))
+            {
+                return NotFound(); //404
+            }
+            _context.People.Update(person);
+            await _context.SaveChangesAsync();
+            return NoContent(); // 204 status code 
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message); // 500 internal server error + message in the response body
+        }
+    }
+
+    [HttpDelete("{id:int}")]  // Delete /api/people/1
+    public async Task<IActionResult> DeletePerson(int id)
+    {
+        try
+        {
+            var person = await _context.People.FindAsync(id);
+
+            if (person is null)
+            {
+                return NotFound(); // 404 not found status code
+            }
+
+            _context.People.Remove(person);
+            await _context.SaveChangesAsync();
+            return NoContent(); // 204 status code 
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message); // 500 internal server error + message in the response body
+        }
+    }
 }
 
+// server app: http://localhost:3000
+// client app (js app) : http://localhost:5173 => CORS
