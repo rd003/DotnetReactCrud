@@ -20,6 +20,9 @@ const PersonList = ({ peopleList, onPersonEdit, onPersonDelete }) => {
                             <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
                                 Last Name
                             </th>
+                            <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">
+                                Country
+                            </th>
                             <th className="px-6 py-4 text-center text-sm font-semibold text-gray-700">
                                 Actions
                             </th>
@@ -34,6 +37,10 @@ const PersonList = ({ peopleList, onPersonEdit, onPersonDelete }) => {
                             </td>
                             <td className="px-6 py-4 text-sm font-medium text-gray-900">
                                 {person.lastName}
+                            </td>
+
+                            <td className="px-6 py-4 text-sm font-medium text-gray-900">
+                                {person.country ? person.country : <span>Not specified</span>}
                             </td>
 
                             <td className="px-6 py-4 text-center">

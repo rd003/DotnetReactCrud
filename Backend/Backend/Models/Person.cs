@@ -13,4 +13,8 @@ public class Person
     [Required]
     [MaxLength(30)]
     public string LastName { get; set; } = string.Empty;
+
+
+    [MaxLength(50)]
+    public string? Country { get; set; }
 }

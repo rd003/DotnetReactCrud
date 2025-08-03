@@ -1,4 +1,5 @@
 import { Save, RotateCcw } from 'lucide-react';
+import countries from '../../data/countries.json'
 
 const PersonForm = ({ methods, onFormReset, onFormSubmit }) => {
 
@@ -7,8 +8,6 @@ const PersonForm = ({ methods, onFormReset, onFormSubmit }) => {
         handleSubmit,
         formState: { errors },
     } = methods;
-
-
 
     return (
         <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-6" style={{ marginBottom: '5px' }}>
@@ -57,6 +56,31 @@ const PersonForm = ({ methods, onFormReset, onFormSubmit }) => {
 
                         {errors.lastName?.type === 'maxLength' && <p className="mt-1 text-sm text-red-600 flex items-center">
                             LastName can not exceed 30 characters
+                        </p>}
+                    </div>
+
+                    {/* Country Dropdown */}
+                    <div>
+                        <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-2">
+                            Country
+                        </label>
+                        <select
+                            {...register("country", {
+                                maxLength: 50
+                            })}
+                            className="w-full px-4 py-4 rounded-lg border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+                        >
+                            <option value="">
+                                Select a country
+                            </option>
+                            {countries.map((country) => (
+                                <option key={country.iso} value={country.name}>
+                                    {country.name}
+                                </option>
+                            ))}
+                        </select>
+                        {errors.country?.type === 'maxLength' && <p className="mt-1 text-sm text-red-600 flex items-center">
+                            Country can not exceed 50 characters
                         </p>}
                     </div>
                 </div>

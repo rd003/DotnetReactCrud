@@ -4,8 +4,9 @@ POST {{base_addess}}
 Content-Type: application/json
 
 {
-    "firstName":"J",
-    "lastName":"D"
+    "firstName":"John",
+    "lastName":"Doe",
+    "country":"Germany"
 }
 
 ###

@@ -36,7 +36,8 @@ function Person() {
     const defaultFormValues = {
         id: 0,
         firstName: '',
-        lastName: ''
+        lastName: '',
+        country: null
     }
 
     const methods = useForm({
