@@ -1,5 +1,7 @@
 # Full stack crud application in .NET 9 and React 19
 
+It is a source code of my [youtube tutorial](https://youtu.be/qcczkv-Hz5c?si=yMJE-_oWz8Ymlx3G) on the same topic.
+
 ## Tech stack
 
 - .NET 9 Web APIs (Backend)
